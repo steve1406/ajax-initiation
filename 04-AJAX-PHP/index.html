@@ -5,113 +5,68 @@
         -nom
 
     2. Effectuer la validation jQuery des données du formulaire
-
 -->
-
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Document</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Ajax et PHP</title>
 </head>
-
 <body>
-    <form id="first_form" method="post" action="" class="novalidate">
 
-        <div class="form-group" col-3>
-            <label for="first_name">First Name:</label>
-            <input type="text" class="form-control" id="first_name" name="first_name"></input>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-5 mx-auto">
+
+                <h3 class="text-center display-4">
+                    Inscription à notre newsletter !
+                </h3>
+
+                <form id="newsletter" 
+                    action="newsletter.php" 
+                    method="post" novalidate>
+
+                    <div class="form-group">
+                        <input type="email" name="email"
+                            class="form-control"
+                            placeholder="Adresse Email." />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="prenom"
+                            class="form-control"
+                            placeholder="Prénom." />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="nom"
+                            class="form-control"
+                            placeholder="Nom." />
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-block btn-dark">
+                            M'inscrire !
+                        </button>
+                    </div>
+
+                </form>
+            </div>
         </div>
-        <div class="form-group" col-3>
-            <label for="last_name">Last Name:</label>
-            <input type="text" class="form-control" id="last_name" name="last_name"></input>
-        </div>
-        <div class="form-group" col-3>
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" name="email"></input>
-        </div>
+    </div>
 
-        <div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </form>
-
-    <style>
-        form label {
-            display: inline-block;
-            width: 100px;
-        }
-
-        form div {
-            margin-bottom: 10px;
-        }
-
-        .error {
-            color: red;
-            margin-left: 5px;
-        }
-
-        label.error {
-            display: inline;
-        }
-    </style>
-
-
-
-
-
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-
-
-
-    <script>
-
-        $(document).ready(function () {
-
-            $('#first_form').submit(function (e) {
-                e.preventDefault();
-                var first_name = $('#first_name').val();
-                var last_name = $('#last_name').val();
-                var email = $('#email').val();
-
-                console.log(email);
-                $(".error").remove();
-
-                if (first_name.length < 1) {
-                    $('#first_name').after('<span class="error">This field is required</span>');
-                }
-                if (last_name.length < 1) {
-                    $('#last_name').after('<span class="error">This field is required</span>');
-                }
-                if (email.length < 1) {
-                    $('#email').after('<span class="error">This field is required</span>');
-                } else {
-                    var regEx = /^[A-Z0-9][A-Z0-9._%+-]{0,63}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/;
-                    var validEmail = regEx.test(email);
-                    if (validEmail) {
-                        $('#email').after('<span class="error">Enter a valid email</span>');
-                    }
-                }
-
-            });
-
-        });
-
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Validation de la newsletter -->
+    <script src="./assets/js/newsletter.js"></script>
 </body>
-
 </html>
+
+
+
